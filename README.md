@@ -1,7 +1,7 @@
-# first-start
+# newsLine
 
-Лента новостей на JS
+Newsline on JS
 ***
-Вывод всех новостей /
-Счетчик/
-Добавление новых новостей/
+output all news /
+news counter/
+Adding new news/
