@@ -1,7 +1,42 @@
-class News{
-            constructor(arrNews=[header=[], text=[], date=[], arrTeg=[]]){
-                this.arrNews = arrNews     
+///переключение темы
+let buttonTheme = document.querySelectorAll('#buttonTheme');
+let click2 = true;
+let body = document.querySelectorAll('body');
+buttonTheme[0].onclick=function(){
+    if(click2==true){
+        body[0].style.background = 'white'
+        body[0].style.color = '#535353'
+        link.style.color = '#535353'
+        buttonTheme[0].innerHTML=`<img src="../img/day_n.png" id="but_img_2" alt="Кнопка" width="70px">`
+        click2=false;
+    }
+        else{
+            body[0].style.background = 'black'
+            body[0].style.color = '#e5dada'
+            link.style.color = '#e5dada'
+            buttonTheme[0].innerHTML=`<img src="../img/night_n.png" id="but_img_2" alt="Кнопка" width="70px">`;
+            click2=true;
+        }   
+}
 
+
+
+        class News{
+            constructor(arrNews=[[], [], [], []]){
+                this.arrNews = arrNews     
+                
+                let dataNow = new Date().toLocaleDateString()
+              let cutDateNews =arrNews[2][0].split("-")
+               let cutDateNow = dataNow.split(".")
+                    if(cutDateNews[0] == cutDateNow[2] && cutDateNews[1] == cutDateNow[1] && cutDateNews[2] == cutDateNow[0] ){
+                         dateNews = `<br><br>Опубликовано сегодня`
+                    }
+                    if(Number(cutDateNow[0]) - Number(cutDateNews[2]) == 1 && cutDateNow[1] == cutDateNews[1] && cutDateNow[2] == cutDateNews[0]){
+                        dateNews = `<br><br>Опубликовано вчера`
+                 }
+                     else{
+                         dateNews = `<br><br>Опубликовано ${arrNews[2]} `
+                        }  
             }
             
             get quantityNews(){
@@ -21,18 +56,19 @@ class News{
                     return(`На странице ${sumQuantity} новости:`);
                 }  
             }
+            
             outNews(){
                 for(let i=0; i<this.arrNews[0].length; i++){
                    
-                    out[0].innerHTML+= `<br><br><b> ${this.arrNews[0][i]}</b><br> ${this.arrNews[1][i]}<br> ${this.arrNews[2][i]} <br>${this.arrNews[3][i]}`
-                    out[0].style.width = '100%'; 
+                    out[0].innerHTML+= `<br><br><b> ${this.arrNews[0][i]}</b><br><br> ${this.arrNews[1][i]}<br> ${dateNews} <br>${this.arrNews[3][i]}`
+                   // out[0].style.width = '100%'; 
                     out1[0].innerHTML= arrAllNews[0].quantityNews 
                     
                    
                 }
             
             }
-            addNews(newsForClean){  
+            addNews(){  
                 let header = document.getElementById("header");
                 let text = document.getElementById("text");
                 let date = document.getElementById("date");
@@ -49,6 +85,7 @@ class News{
                 tegs.value = ''
              }
         }
+        let dateNews = ``
         let kolvo = 0
         let sumQuantity =0 
         let click = true
@@ -57,11 +94,7 @@ class News{
         let but = document.getElementsByTagName('button');
         let add = document.querySelectorAll('#add');
         let arrAllNews = [];
-        let header = document.getElementById("header");
-        let text = document.getElementById("text");
-        let date = document.getElementById("date");
-        let tegs = document.getElementById("tegs");
-        arrAllNews.push ( new News([['Заголовок1', 'Заголовок2' ], ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget lacus id est feugiat mollis. Praesent ullamcorper ante nec tempus eleifend. Sed velit urna, scelerisque euismod vehicula in, luctus sit amet tortor. Etiam at posuere enim. Sed ultrices eros sed augue fringilla, id venenatis neque congue. Sed tortor odio, pretium a maximus feugiat, sagittis in tellus. Donec volutpat purus vel metus porta, sed egestas odio egestas. Ut euismod efficitur turpis non dictum. Curabitur fermentum eu sapien id convallis.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget lacus id est feugiat mollis. Praesent ullamcorper ante nec tempus eleifend. Sed velit urna, scelerisque euismod vehicula in, luctus sit amet tortor. Etiam at posuere enim. Sed ultrices eros sed augue fringilla, id venenatis neque congue. Sed tortor odio, pretium a maximus feugiat, sagittis in tellus. Donec volutpat purus vel metus porta, sed egestas odio egestas. Ut euismod efficitur turpis non dictum. Curabitur fermentum eu sapien id convallis.'],['25.12.2013', '04.04.1658'], ['#tru1 #hgt1 #tefff #tegg #tefff #tegg#tefff #tegg#tefff #tegg', '#tefff #tegg']]));
+        arrAllNews.push ( new News([['Заголовок1' ], ['Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget lacus id est feugiat mollis. Praesent ullamcorper ante nec tempus eleifend. Sed velit urna, scelerisque euismod vehicula in, luctus sit amet tortor. Etiam at posuere enim. Sed ultrices eros sed augue fringilla, id venenatis neque congue. Sed tortor odio, pretium a maximus feugiat, sagittis in tellus. Donec volutpat purus vel metus porta, sed egestas odio egestas. Ut euismod efficitur turpis non dictum. Curabitur fermentum eu sapien id convallis.'],['2013-12-25'], ['#tefff #tegg']]));
         arrAllNews[0].outNews();
          function butAdd(){
            if(click){
@@ -75,6 +108,10 @@ class News{
                     click = true
                 }
                 
+        }
+        
+        function butSave(){
+            arrAllNews[0].addNews()
         }
         
         function butSave(){
