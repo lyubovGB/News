@@ -3,22 +3,38 @@
 <head>
     <meta charset='utf-8'>
     <title>Лента новостей</title>
-     <style>
-        #out{ 
-            column-count: 3;
-            
-            column-gap: 300px;
-            
-            column-rule: 3px solid #ccc;
-        }     
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <span></span>
-    <button onclick="butAdd()">Добавить новость</button>
-    <div id="add"></div>
-    <div id="out"></div>
-    
-    <script src="main.js"></script>
+    <header>
+        <a href="../index.html" id="link">  Любовь Глебова </a>
+        <div id="buttonTheme">
+            <img src="../img/night_n.png"  alt="Кнопка" width="70px">
+        </div>  
+        <div id="dropMenu">Другие проекты<img src="https://e7.pngegg.com/pngimages/474/986/png-clipart-drop-down-list-arrow-computer-icons-arrow-angle-rectangle-thumbnail.png" width="20px">
+            <div id="dropLink">
+                <a href="../калькулятор/index.html">Калькулятор</a>
+                <a href="../магазин/index.html">Магазин</a>
+                <a href="#">Лента новостей</a>
+                <a href="../слайдер/1.html">Слайдер</a>
+                <a href="../index.html">Главная</a>
+            </div>
+        </div> 
+    </header>
+
+<main>
+   <span></span>
+   <button id="but" onclick="butAdd()">Добавить новость</button>
+   <div id="add"></div>
+   <div id="cat">
+    <a  href="https://github.com/lyubovGB"> <img title="Смотреть код на GitHub" src="https://media.tenor.com/_mYZWyrW3AUAAAAi/peach-goma-pc-night-keyboard-smashing.gif" width="100px"></a> 
+ </div>
+       
+   <div id="out"></div>
+</main>
+    <footer>
+        ©Lyubov_programy 2023
+   </footer>
+       <script src="main.js" ></script>
 </body>
-</html>
+</html>   
